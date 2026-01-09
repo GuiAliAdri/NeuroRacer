@@ -1,0 +1,25 @@
+# --- Python Bytecode & Cache ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Ambientes Virtuais (Virtual Envs) ---
+venv/
+env/
+.env
+.venv/
+
+# --- IDEs e Editores ---
+.vscode/
+.idea/
+*.swp
+neat-checkpoint-*
+
+# --- Sistema Operacional ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Logs de Erros ---
+*.log
