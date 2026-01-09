@@ -1,77 +1,82 @@
-# 🏎️ NeuroRacer - IA Evolutiva
+# 🏎️ NeuroRacer - Evolutionary AI
 
-Um simulador de direção autônoma onde carros aprendem a dirigir sozinhos utilizando Redes Neurais e Algoritmos Genéticos (NEAT). A cada geração, a IA evolui, aprende a fazer curvas e desviar de obstáculos em uma pista gerada proceduralmente.
+A self-driving car simulation where vehicles learn to drive autonomously using Neural Networks and Genetic Algorithms (NEAT). With every generation, the AI evolves, learning to navigate curves, avoid obstacles, and optimize its path on a procedurally generated track.
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Pygame](https://img.shields.io/badge/Library-Pygame-green)
 ![NEAT](https://img.shields.io/badge/Algorithm-NEAT-orange)
 
-## 🧠 Como Funciona?
+## 🧠 How It Works
 
-O projeto utiliza a biblioteca **NEAT-Python** (NeuroEvolution of Augmenting Topologies).
-1.  **Sensores (Input):** Cada carro possui 5 "raios" (lidar) que medem a distância até as paredes ou obstáculos.
-2.  **Rede Neural:** Essas distâncias entram na rede neural do carro, que processa a informação.
-3.  **Ação (Output):** A rede decide se o carro deve virar para a **Esquerda** ou para a **Direita**.
-4.  **Evolução:** Os carros que chegam mais longe e passam por mais checkpoints sobrevivem. Os piores são eliminados. A próxima geração é criada a partir dos "filhos" dos melhores pilotos.
+The project utilizes the **NEAT-Python** (NeuroEvolution of Augmenting Topologies) library.
 
-## 🚀 Funcionalidades
+1.  **Sensors (Input):** Each car is equipped with 5 "rays" (LIDAR-like sensors) that measure the distance to walls or obstacles.
+2.  **Neural Network:** These distance values are fed into the car's neural network as input.
+3.  **Action (Output):** The network processes the inputs and decides whether to steer **Left** or **Right**.
+4.  **Evolution:** Cars that travel further and pass through more checkpoints are rewarded with higher "fitness". The worst performers are eliminated, and the best ones pass their "genes" (weights and biases) to the next generation with slight mutations.
 
-* **Geração Procedural de Pistas:** O traçado da pista, a linha de chegada e os obstáculos são gerados via código a cada execução, garantindo que a IA não apenas "decore" um mapa.
-* **Visão da IA:** Linhas coloridas mostram exatamente o que o carro está enxergando em tempo real.
-* **Sistema de Checkpoints:** Lógica robusta para garantir que os carros andem na direção correta.
-* **Contador de Voltas:** Exibe quantos carros conseguiram completar o circuito.
+## 🚀 Key Features
 
-## 🛠️ Instalação
+* **Procedural Track Generation:** The track layout, finish line, and obstacles are mathematically generated via code every time the game runs, ensuring the IA generalizes rather than memorizing a static map.
+* **AI Vision Visualization:** Real-time rendering of sensor rays (green lines) showing exactly what the car detects.
+* **Checkpoint System:** Robust logic using invisible checkpoints to ensure cars follow the correct track direction.
+* **Performance Tracking:** Displays the current generation, best score, and the number of cars that successfully crossed the finish line.
 
-1.  **Clone o repositório:**
+## 🛠️ Installation
+
+1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/seu-usuario/NeuroRacer.git](https://github.com/seu-usuario/NeuroRacer.git)
+    git clone [https://github.com/your-username/NeuroRacer.git](https://github.com/your-username/NeuroRacer.git)
     cd NeuroRacer
     ```
 
-2.  **Crie um ambiente virtual (Opcional, mas recomendado):**
+2.  **Create a virtual environment (Optional but recommended):**
     ```bash
-    python -m venv venv
     # Windows:
+    python -m venv venv
     .\venv\Scripts\activate
+
     # Linux/Mac:
+    python3 -m venv venv
     source venv/bin/activate
     ```
 
-3.  **Instale as dependências:**
+3.  **Install dependencies:**
     ```bash
     pip install pygame neat-python
     ```
 
-## 🎮 Como Rodar
+## 🎮 How to Run
 
-1.  **Gere os Assets (apenas na primeira vez):**
-    Execute este script para criar a pasta `assets` e desenhar o sprite do carro automaticamente.
+1.  **Generate Assets (First run only):**
+    Run this script to create the `assets` folder and generate the pixel art car sprite automatically.
     ```bash
     python setup_assets.py
     ```
 
-2.  **Inicie a Simulação:**
+2.  **Start the Simulation:**
     ```bash
     python main.py
     ```
 
-## ⚙️ Configuração (NEAT)
+## ⚙️ Configuration (NEAT)
 
-Você pode ajustar os parâmetros da inteligência artificial editando o arquivo `config-neat.txt`:
-* `pop_size`: Quantidade de carros por geração (Padrão: 30).
-* `max_stagnation`: Quantas gerações sem melhora antes de reiniciar as espécies.
+You can tweak the Artificial Intelligence parameters by editing the `config-neat.txt` file:
 
-## 📂 Estrutura do Projeto
+* **`pop_size`**: The number of cars per generation (Default: 30). Increase this for faster evolution if your CPU can handle it.
+* **`fitness_threshold`**: The score required to consider the simulation "won".
+* **Mutation Rates**: Adjust how much the neural network changes between generations.
 
-* `main.py`: Arquivo principal que inicia o loop do NEAT.
-* `src/`: Contém todo o código fonte do jogo.
-    * `game.py`: Gerencia a janela, loop do jogo e renderização.
-    * `car.py`: Lógica do carro, física, sensores e colisão.
-    * `track_generator.py`: Algoritmo que desenha a pista e a máscara de colisão.
-    * `config.py`: Constantes globais (cores, velocidade, dimensões).
-* `assets/`: Imagens do jogo (geradas via script).
+## 📂 Project Structure
+
+* `main.py`: Entry point that initializes the NEAT loop.
+* `src/`: Contains the game source code.
+    * `game.py`: Manages the game window, loop, and rendering.
+    * `car.py`: Handles car physics, sensor logic, and collision detection.
+    * `track_generator.py`: Algorithm that procedurally draws the visual track and collision masks.
+    * `config.py`: Global constants (colors, speed, screen dimensions).
+* `assets/`: Game images (generated via script).
 
 ---
-Desenvolvido com 🐍 Python
-Feito por: Guilherme Ali Adri
+Developed with 🐍 Python.
+##### Made By: Guilherme Ali Adri
